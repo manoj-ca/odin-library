@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="library.js" defer></script>
+  <title>Odin Library</title>
+</head>
+
+<body>
+  <div class="content">
+    <div class="side">
+      <div class="logo">
+        <img class="white" src="images/bookshelf.svg" alt="" height="128">
+        <div class="name">Library</div>
+      </div>
+      <button class="green">Add Book</button>
+      <div class="empty"></div>
+      <div class="credit">Photo by <a class="link"
+          href="https://unsplash.com/@emilwidlund?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Emil
+          Widlund</a> on <a class="link"
+          href="https://unsplash.com/photos/assorted-books-ZtI4l8EvyUw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      </div>
+    </div>
+    <div class="main">
+      <dialog class="add">
+        <button class="close" autofocus>
+          <img class="x" src="./images/close-thick.svg" width="48px" />
+        </button>
+        <form action="example.com/path" method="post">
+          <div class="form">
+            <div class="input">
+              <label class="label" for="title"><span>BOOK TITLE</span></label>
+              <input class="text" type="text" id="title" name="title" required />
+            </div>
+            <div class="input">
+              <label class="label" for="author"><span>BOOK AUTHOR</span></label>
+              <input class="text" type="text" id="author" name="author" required />
+            </div>
+            <div class="input">
+              <label class="label" for="pages"><span>NUMBER OF PAGES</span></label>
+              <input class="num" type="number" id="pages" name="pages" required />
+            </div>
+            <label class="container" for="read">DONE READING
+              <input type="checkbox" id="read" name="read">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <button class="black submit" type="submit">Add Book</button>
+        </form>
+      </dialog>
+      <dialog class="full">
+        <button class="close" autofocus>
+          <img class="x" src="./images/close-thick.svg" width="48px" />
+        </button>
+        <div class="warn">LIBRARY IS FULL!</div>
+      </dialog>
+      <div class="library">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
