@@ -135,12 +135,47 @@ function addBooks() {
 
 const books = addBooks();
 
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const pagesInput = document.getElementById("pages");
+
+function showError(input) {
+  const error = input.nextElementSibling;
+  if (input.validity.valueMissing) {
+    if (input.id === "title") {
+      error.textContent = "Please enter a book title.";
+    } else if (input.id === "author") {
+      error.textContent = "Please enter a book author.";
+    } else if (input.id === "pages") {
+      error.textContent = "Please enter the number of pages.";
+    }
+  }
+  error.className = "error active";
+}
+
+[titleInput, authorInput, pagesInput].forEach((input) => {
+  input.addEventListener("input", () => {
+    const error = input.nextElementSibling;
+    if (input.validity.valid) {
+      error.textContent = "";
+      error.className = "error";
+    } else {
+      showError(input);
+    }
+  });
+});
+
 addButton.addEventListener("click", () => {
   addDialog.showModal();
 });
 
 addCloseButton.addEventListener("click", () => {
   form.reset();
+  [titleInput, authorInput, pagesInput].forEach((input) => {
+    const error = input.nextElementSibling;
+    error.textContent = "";
+    error.className = "error";
+  });
   addDialog.close();
 });
 
@@ -149,6 +184,16 @@ fullCloseButton.addEventListener("click", () => {
 });
 
 form.addEventListener("submit", (event) => {
+  if (!form.checkValidity()) {
+    [titleInput, authorInput, pagesInput].forEach((input) => {
+      if (!input.validity.valid) {
+        showError(input);
+      }
+    });
+    event.preventDefault();
+    return;
+  }
+
   event.preventDefault();
   if (curLib.length >= 9) {
     form.reset();
